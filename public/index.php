@@ -7,7 +7,7 @@ define("WEBROOT","http://localhost:8005/");
 
 require_once(ROOT."db/config.php");
 require_once(ROOT."db/helpers.php");
-// require_once(ROOT."validation/validation.php");
+require_once(ROOT."validation/validation.php");
 require_once(ROOT."route/web/route.php");
 
 gestionController();

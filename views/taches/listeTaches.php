@@ -9,7 +9,7 @@
         
         <div class="flex justify-between mb-8">
 
-            <form class="flex gap-3" action="<?=WEBROOT?>?page=filtre" method="post">
+            <form class="flex gap-3" action="<?=WEBROOT?>?controller=taches&page=filtre" method="post">
                 <input
                     type="text"
                     placeholder="Filtrer par nom..."
@@ -25,7 +25,7 @@
             </form>
 
 
-            <a href="<?=WEBROOT?>?page=ajout" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 flex items-center gap-2">
+            <a href="<?=WEBROOT?>?controller=taches&page=ajout" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 flex items-center gap-2">
                 <i class="fa-solid fa-plus"></i>
                 Ajouter
             </a>
@@ -49,25 +49,24 @@
                 </thead>
 
                 <tbody class="text-gray-700">
-                    <?php foreach ($taches as $key=>$tache ): ?>
+                    <?php foreach ($taches  as $key=>$tache ): ?>
                     <tr class="border-b hover:bg-gray-50">
                         <td class="p-4"><?= $tache["nom"] ?></td>
-                        <td class="p-4"><?= $tache["date"] ?></td>
+                        <td class="p-4"><?= $tache["date_echeance"] ?></td>
                         <td class="p-4"><?= $tache["description"] ?></td>
                         <td class="p-4 text-yellow-600 font-semibold"><?= $tache["statut"] ?></td>
 
                         <td class="p-4 text-center space-x-4">
 
-
-                            <a href="" class="text-green-500 hover:text-green-700">
+                            <a href="<?=WEBROOT?>?controller=taches&page=update&id=<?=$tache['id']?>" class="text-green-500 hover:text-green-700">
                             <i class="fa-solid fa-check"></i>
                             </a>
 
-                            <a href="<?=WEBROOT?>?page=detail&id=<?=$tache['id']?>" class="text-gray-600 hover:text-black">
+                            <a href="<?=WEBROOT?>?controller=taches&page=detail&id=<?=$tache['id']?>" class="text-gray-600 hover:text-black">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
 
-                            <a href="<?=WEBROOT?>?page=supprimer&id=<?=$tache['id']?>" class="text-red-500 hover:text-red-700">
+                            <a href="<?=WEBROOT?>?controller=taches&page=supprimer&id=<?=$tache['id']?>" class="text-red-500 hover:text-red-700">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
 
