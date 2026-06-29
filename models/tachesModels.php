@@ -53,3 +53,28 @@ function updateStatut(int $id) {
     $sql = "UPDATE taches SET statut = 'termine' WHERE id = :id";
     executeUpdate($sql, ['id' => $id]);
 }
+
+
+function countAllTaches(): int {
+    $sql = "SELECT COUNT(*) as total FROM taches";
+    $result = executeSelect($sql, [], true);
+    return (int)$result['total'];
+}
+
+function getPaginatedTaches(int $offset, int $limit): array {
+    $sql = "SELECT * FROM taches ORDER BY id DESC LIMIT $offset, $limit";
+    return executeSelect($sql);
+}
+
+function editTache(array $data) {
+    $sql = "UPDATE taches 
+            SET nom = :nom, description = :description, date_echeance = :date_echeance 
+            WHERE id = :id";
+    
+    executeUpdate($sql, [
+        'nom'           => $data["nom"],
+        'description'   => $data["description"],
+        'date_echeance' => $data["date_echeance"],
+        'id'            => (int)$data["id"]
+    ]);
+}
